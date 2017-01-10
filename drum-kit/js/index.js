@@ -21,6 +21,10 @@ function playSounds(e) {
     audio.currentTime = 0;
     audio.play();
 
+    if (key.classList.contains('playing')) {
+        key.classList.remove('playing');
+        return;
+    }
     key.classList.add('playing');
 }
 
@@ -29,8 +33,7 @@ function playSounds(e) {
  * @param e Event
  */
 function removeTransition(e) {
-  if (e.propertyName !== 'transform')  {
-      return; // There is nothing to do
-  }
+  if (e.propertyName !== 'transform') return; // There is nothing to do
+
   this.classList.remove('playing');
 }
